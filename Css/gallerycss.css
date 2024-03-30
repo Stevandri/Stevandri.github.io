@@ -1,0 +1,135 @@
+body {
+  background-color: #001526;
+  font-family: arial;
+  color: white;
+  cursor: url("img/cursor.png");
+}
+
+.maincontainer{display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    min-height: 100vh;
+    right: 0px;
+    cursor: url("img/cursor.png");
+  }
+
+a {
+  color: #fff; /* Mengubah warna link menjadi hitam */
+  text-decoration: none;
+}
+
+.fixed {
+  border-bottom: 2px solid #ffff;  /* Garis merah tebal 2px */
+display: flex;
+position: fixed;
+width: 100%;
+top: 0px;
+background-color: #001526;
+z-index: 100;
+background: transparent;
+backdrop-filter: blur(50px);
+}
+
+.nama {
+  width: 60%;
+  font-size: 160%;
+ height: 40px;
+}
+
+.nama1 {
+  color: #55CBE8;
+  font-weight: bold;
+}
+
+.nama2 {
+  font-weight: bold;
+}
+
+.menu {
+  width: 40%;
+  float: right;
+  right: 10%;
+  font-size: 160%;
+}
+
+.home, .gallery, .blog, .contact {
+  margin: 0 5%;
+}
+
+.gallery {
+  font-weight: bold;
+  color: #4ECFEA;
+}
+
+.maintitle{
+  margin-top: 2%;
+  position: relative;
+  color: #55CBE8;
+  font-size: 190%;
+  width: 30%;
+  font-weight: bold;
+}
+
+.gridwrapper > div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gridwrapper > div > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.gridwrapper{
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-auto-rows: 200px;
+  grid-auto-flow: dense;
+}
+
+
+.gridwrapper .wide{
+  grid-column: span 2;
+}
+
+.gridwrapper .tall{
+  grid-row: span 2;
+}
+
+
+
+.gridwrapper .big{
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.gridwrapper > img{
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.maintitle >p{
+  color: white;
+
+}
+
+.tigadimensi{
+  color: white;
+  font-size:190% ;
+  font-weight: bold;
+}
+
+.maksud {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  font-size: 15px;
+  opacity: 0.6;
+  right: 0;
+  z-index: 100;
+}
