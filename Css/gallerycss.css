@@ -1,6 +1,8 @@
 body {
   background-color: #001526;
   font-family: arial;
+  margin: 0;
+  padding: 0;
   color: white;
   cursor: url("img/cursor.png");
 }
@@ -8,6 +10,8 @@ body {
 .maincontainer{display: flex;
     flex-direction: column; /* Stack elements vertically */
     min-height: 100vh;
+      margin: 0;
+  padding: 0;
     right: 0px;
     cursor: url("img/cursor.png");
   }
@@ -55,81 +59,198 @@ backdrop-filter: blur(50px);
   margin: 0 5%;
 }
 
-.gallery {
+.gallery{
   font-weight: bold;
-  color: #4ECFEA;
-}
-
-.maintitle{
-  margin-top: 2%;
-  position: relative;
   color: #55CBE8;
-  font-size: 190%;
-  width: 30%;
-  font-weight: bold;
 }
 
-.gridwrapper > div{
-  display: flex;
-  justify-content: center;
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #001526;
+    overflow: hidden;
+}
+
+.container{
+    position: absolute;
+    top: 50%;
+    left: 36%;
+    transform: translate(-50%, -50%);
+    width: 1000px;
+    height: 600px;
+    justify-content: center;
   align-items: center;
+  align-content: center;
+    background: #001526;
+    box-shadow: 0 30px 50px #001526;
 }
 
-.gridwrapper > div > img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 5px;
+.container .slide .item{
+    width: 200px;
+    height: 300px;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    border-radius: 20px;
+    box-shadow: 0 30px 50px #505050;
+    background-position: 50% 50%;
+    background-size: cover;
+    display: inline-block;
+    transition: 0.5s;
 }
 
-.gridwrapper{
-  display: grid;
-  grid-gap: 10px;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  grid-auto-rows: 200px;
-  grid-auto-flow: dense;
+.slide .item:nth-child(1),
+.slide .item:nth-child(2){
+    top: 0;
+    left: 0;
+    transform: translate(0, 0);
+    border-radius: 0;
+    width: 140%;
+    height: 100%;
+}
+
+.name {
+  shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.prev{
+  background-image: url(../img/preview.png);
+  background-size: cover;
+}
+
+.next{
+   background-image: url(../img/next.png);
+  background-size: cover;
+}
+
+.slide .item:nth-child(3){
+    left: 50%;
+}
+.slide .item:nth-child(4){
+    left: calc(50% + 220px);
+}
+.slide .item:nth-child(5){
+    left: calc(50% + 440px);
+}
+
+/* here n = 0, 1, 2, 3,... */
+.slide .item:nth-child(n + 6){
+    left: calc(50% + 660px);
+    opacity: 0;
 }
 
 
-.gridwrapper .wide{
-  grid-column: span 2;
+
+.item .content{
+    position: absolute;
+    top: 50%;
+    left: 100px;
+    width: 300px;
+    text-align: left;
+    color: #eee;
+    transform: translate(0, -50%);
+    font-family: system-ui;
+    display: none;
 }
 
-.gridwrapper .tall{
-  grid-row: span 2;
+
+.slide .item:nth-child(2) .content{
+    display: block;
 }
 
 
-
-.gridwrapper .big{
-  grid-column: span 2;
-  grid-row: span 2;
-}
-
-.gridwrapper > img{
-  max-width: 100%;
-  height: auto;
-  vertical-align: middle;
-  display: inline-block;
-}
-
-.maintitle >p{
-  color: white;
-
-}
-
-.tigadimensi{
-  color: white;
-  font-size:190% ;
-  font-weight: bold;
-}
-
-.maksud {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  font-size: 15px;
-  opacity: 0.6;
-  right: 0;
+.content .name{
   z-index: 100;
+    font-size: 40px;
+    text-transform: uppercase;
+    font-weight: bold;
+    opacity: 0;
+    animation: animate 1s ease-in-out 1 forwards;
 }
+
+.content .des{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: animate 1s ease-in-out 0.3s 1 forwards;
+}
+
+.content button{
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    opacity: 0;
+    animation: animate 1s ease-in-out 0.6s 1 forwards;
+}
+
+
+@keyframes animate {
+    from{
+        opacity: 0;
+        transform: translate(0, 100px);
+        filter: blur(33px);
+    }
+
+    to{
+        opacity: 1;
+        transform: translate(0);
+        filter: blur(0);
+    }
+}
+
+
+
+.button{
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    bottom: 20px;
+}
+
+.button button{
+    width: 40px;
+    height: 35px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    margin: 0 5px;
+    border: 1px solid #000;
+    transition: 0.3s;
+}
+
+.button button:hover{
+    background: #ababab;
+    color: #fff;
+}
+
+
+
+/*mouse*/
+.trail{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    background-size: cover;
+    position: fixed;
+    animation: come 1s linear forwards;
+  }
+
+  @keyframes come{
+    0%{
+    transform: scale(0);
+    }
+    10%{
+    transform: scale(1) translateY(0px);
+    opacity: 1;
+    }
+
+    100%{
+    transform: scale(0) translateY(-50px);
+    opacity: 1;
+    }
+  }

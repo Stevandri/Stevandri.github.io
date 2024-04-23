@@ -40,6 +40,17 @@
         <div class="cv"><a href="https://drive.google.com/file/d/1CsOHjovZA38UjA0L1lhLMwAfykb1oFSk/view?usp=sharing" class="cv1" target="_blank">Download CV</a></div>
     </div>
 
+<div class="m3welcome">
+    <div class="imgm3">
+        <div class="eye">
+            <div class="ball"></div>
+        </div>
+        <div class="eye">
+            <div class="ball"></div>
+        </div>
+    </div>
+</div>
+
 
     <!-- <div class="galleriku">
         <img src="img/background1.png" class="galleriku1">
@@ -88,5 +99,37 @@
 
 </div>
 
+
+<script>
+    var balls = document.getElementsByClassName("ball");
+    document.onmousemove = function(){
+      var x = event.clientX * 100 / window.innerWidth + "%";
+      var y = event.clientY * 100 / window.innerHeight + "%";
+
+
+      for(var i=0; i<2; i++){
+        balls[i].style.left = x;
+         balls[i].style.top = y;
+         balls[i].style.transform = "translate(-"+x+",-"+y+")";
+      }
+    }
+
+
+//Mouse
+    var body=document.body;
+
+    document.addEventListener('mousemove', (e)=> {
+      var elem=document.createElement('div');
+      elem.setAttribute('class', 'trail')
+      elem.setAttribute('style',`left:${e.clientX - 10}px; top:${e.clientY -10}px`);
+
+      elem.onanimationend=()=>{
+        elem.remove();
+      }
+
+      body.insertAdjacentElement('beforeend', elem);
+
+    })
+  </script>
 </body>
 </html>
