@@ -5,42 +5,10 @@
     $sqluser = "user";
     $sqlpassword = "password";
 
-    /*
-    Replace user and password above with your sql server user and password.
-    if you have not created an user, run sql server in shell as root user and enter:
-    
-    CREATE USER 'user'@'localhost' IDENTIFIED BY 'password';
-
-    GRANT ALL PRIVILEGES ON *.* TO 'user'@'localhost';
-
-    FLUSH PRIVILEGES;
-    
-    You can replace user and password with your desired username and password.
-    */
 
     $sqldatabase = "login";
 
-    /*
-    for this page to work you have to create a database named login and a table named list in your mysql server.
-    To do this, enter following in your mysql server:
-
-    CREATE DATABASE login;
-
-    USE login;
-
-    CREATE TABLE list(
-        id int not null auto_increment,
-        user_name varchar(255) not null,
-        first_name varchar(255) not null,
-        last_name varchar(255) not null,
-        email varchar(255) not null,
-        password varchar(255) not null,
-        PRIMARY KEY (id)
-    );
-
-    keep 'login' and 'list' and all field names in lowercase, otherwise, it won't work.
-    */
-
+   
     try {
         $pdo = new PDO("mysql:host=localhost;dbname=".$sqldatabase,$sqluser,$sqlpassword);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
